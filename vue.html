@@ -1,0 +1,56 @@
+
+        
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+<div id="app">
+    <h1>Hello Vue!</h1>
+    <!-- template with placeholders-->
+    <!-- a directive-->
+    <!-- indide {{}} is javascript-->
+    <!-- | calls filter-->
+    <p>{{ message | uppercase}}</p>
+    <p>This class is ITEC {{ classCode}}, {{ className}}</p>
+    <!-- a directive-->
+    <button v-on:click="addExclamation">Add !</button>    
+    <button v-on:click="clear">Clear exclation points</button>
+</div>
+<script>
+    // the model
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Welcome!',
+            className: 'Web Client Server',
+            classCode: 2560,
+            numberOfExclamationPoints: 1
+
+        },
+        methods: {
+            addExclamation: function() {
+                if (this.numberOfExclamationPoints < 10){
+                this.message = this.message + '!'
+                this.numberOfExclamationPoints++
+                }else{
+                    alert('No more exclamtion points')
+                }
+            },
+            clear: function(){
+                this.message = 'Welcome!'
+                this.numberOfExclamationPoints = 1
+
+            }
+
+
+        },
+        // filter is like a function
+        filters:{
+            uppercase: function(string){
+                return string.toUpperCase()
+            }
+
+        }
+    })
+</script>
+
+
+

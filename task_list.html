@@ -1,0 +1,52 @@
+
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+
+    <body>
+        <h1>Hello Vue loops</h1>
+        <div id="app">
+            <label for="task">Please enter your to do task</label>
+            <!-- connects vue instance with new task-->
+            <input id="task" v-model="newTask">
+            <button v-on:click="addTask">Add task</button>
+        
+            <ul>
+                <!-- task is a variable-->
+                <li v-for="task in tasklist"> {{ task }} </li>
+            </ul>
+            
+           
+
+        </div>
+        <script>
+
+            //this is the model
+            let app = Vue.createApp({
+                data(){
+                    return{
+                        newTask: '',
+                        tasklist: []
+                    }  
+                },
+                methods: {
+                    addTask(){
+                        this.tasklist.push(this.newTask)
+                        // clears input
+                        this.newTask = ''
+                    }
+
+                }
+            })
+                   
+                    
+            
+               
+            app.mount('#app')
+
+        </script>
+
+    </body>
+</html>

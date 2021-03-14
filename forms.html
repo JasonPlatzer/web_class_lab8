@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>       
+    <script src="https://unpkg.com/vue@next"></script>
+
+ </head>
+ <body>
+  <div id="app">
+      <h1>Hello Vue forms</h1>
+      <label for="name">Please enter your name: </label>
+      <!-- v model sets up two way binding on page-->
+      <!-- as text is changed in input data is changed, data in script-->
+      <!-- v model is an input-->
+      <input v-model="name" id="name">
+      <!-- v-if doesnt change html-->
+      <!-- this is conditional rendering-->
+      <!-- is truthy or falsey, an empty string is falsey-->
+      <!-- can be divs instead of<p>s-->
+      <p v-if="name"> 
+          Your name is  {{ name }}
+          <button v-on:click="clear">Clear input</button>
+          
+        </p>
+        
+          <!-- v-else must be right after v-if-->
+          
+          
+          <p v-else>
+              Waiting for user input
+            </p>
+            
+ </div>
+ <script>
+     let app = Vue.createApp({
+         // if data changes html changes becauase of two way binding
+         data() {
+             return {
+                 name: ''
+           }
+         },
+         methods: {
+             clear() {
+                 this.name = ''
+             }
+         }
+
+
+         
+
+     })
+     // associates app in script with div id app
+     // manages view in div id = app as a template
+     app.mount('#app')
+   
+ </script>
+ </body>
+</html>
+
